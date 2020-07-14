@@ -1,11 +1,13 @@
 import React from 'react';
-import './App.css';
+import ExpressCheckout from 'pages/ExpressCheckout';
+import GlobalStyle from './styles/global';
 
 function App() {
   return (
-    <div className="App">
-      <p> Learn React</p>
-    </div>
+    <>
+      <ExpressCheckout />
+      <GlobalStyle />
+    </>
   );
 }
 
