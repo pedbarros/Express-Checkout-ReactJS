@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 import 'react-toastify/dist/ReactToastify.css';
-// import 'react-perfect-scrollbar/dist/css/styles.css';
+import 'react-credit-cards/es/styles-compiled.css';
 
 export default createGlobalStyle`
   @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap');
@@ -32,5 +32,6 @@ export default createGlobalStyle`
   }
   button {
     cursor: pointer;
+    border: 0;
   }
 `;

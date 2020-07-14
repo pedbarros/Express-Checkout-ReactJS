@@ -37,5 +37,6 @@ module.exports = {
     'react/prop-types': 'off',
     'no-param-reassign': 'off',
     'no-console': 'off',
+    'eslint-disable-next-line react/jsx-filename-extension': 'off',
   },
 };
