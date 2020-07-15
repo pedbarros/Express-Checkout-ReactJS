@@ -5,12 +5,17 @@ export const Container = styled.div`
   margin: 50px auto;
 
   display: flex;
+  flex-direction: column;
+
+  @media(min-width: 900px) {
+    flex-direction: row;
+  }
 `;
 
 export const ShoppingCart = styled.div`
   display: flex;
   flex-direction: column;
-  width: 70%;
+  width: 800px;
   padding: 30px;
 
   h2 {
@@ -81,10 +86,38 @@ export const ProductRemove = styled.button`
   font-size: 18px;
 `;
 
+export const Footer = styled.div`
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  button {
+    border: 0;
+    background: transparent;
+    font-weight: bold;
+    color: #2d7aee;
+    font-size: 18px;
+  }
+
+  div {
+    span {
+      color: #40424a;
+      font-size: 14px;
+
+      strong {
+        color: #000;
+        font-size: 20px;
+      }
+    }
+  }
+`;
+
 export const CardDetails = styled.div`
   display: flex;
   flex-direction: column;
-  width: 30%;
+  margin: 0 auto;
+  width: 400px;
   background: #40424a;
   border-radius: 10px;
   padding: 30px;
@@ -101,6 +134,7 @@ export const PaymentForm = styled.div`
   p {
     color: #b0b1b4;
     margin-bottom: 20px;
+    font-weight: bold;
   }
 
   form  {
@@ -108,23 +142,23 @@ export const PaymentForm = styled.div`
     flex-direction: column;
 
     input {
+      font-weight: bold;
       background: transparent;
       border: 0;
       border-bottom: 1px solid #b0b1b4;
       color: #6d6f76;
-      font-weight: bold;
       padding: 5px;
       margin-top: 20px;
       width: 100%;
     }
 
     button {
+      font-weight: bold;
       margin-top: 20px;
       padding: 15px;
       border-radius: 4px;
       color: #fff;
       background: #2d7aee;
-      font-weight: bold;
       font-size: 16px;
 
     }

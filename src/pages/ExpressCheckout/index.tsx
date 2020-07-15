@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import Cards from 'react-credit-cards';
+import InputMask from 'react-input-mask';
+import { AiOutlineArrowLeft } from 'react-icons/ai';
 import {
   Container, ShoppingCart, ProductItem, ProductImage, ProductDescription, ProductQuantity, ProductAmount, ProductRemove,
-  CardDetails, PaymentForm,
+  CardDetails, PaymentForm, Footer,
 } from './styles';
 
 const ExpressCheckout: React.FC = () => {
@@ -82,6 +84,19 @@ const ExpressCheckout: React.FC = () => {
             X
           </ProductRemove>
         </ProductItem>
+
+        <Footer>
+          <button type="button">
+            <AiOutlineArrowLeft />
+            <span>Continue Shopping</span>
+          </button>
+          <div>
+            <span>
+              Subtotal:
+              <strong>R$27,00</strong>
+            </span>
+          </div>
+        </Footer>
       </ShoppingCart>
       <CardDetails>
         <h2>Card Details</h2>
@@ -100,17 +115,8 @@ const ExpressCheckout: React.FC = () => {
               placeholder="Name on card"
               onChange={handleInputChange}
             />
-            <input
-              type="tel"
-              name="number"
-              placeholder="Card Number"
-              onChange={handleInputChange}
-            />
-            <input
-              name="cvc"
-              placeholder="CVC/CVV"
-              onChange={handleInputChange}
-            />
+            <InputMask name="number" placeholder="Card Number" mask="9999 9999 9999 9999" onChange={handleInputChange} />
+            <InputMask name="cvc" placeholder="CVC/CVV" mask="999" onChange={handleInputChange} />
 
             <button type="submit">Check out</button>
 
