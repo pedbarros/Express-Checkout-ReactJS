@@ -1,48 +1,90 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  max-width: 1000px;
+  max-width: 1200px;
   margin: 50px auto;
 
   display: flex;
-
-
 `;
 
 export const ShoppingCart = styled.div`
   display: flex;
   flex-direction: column;
-  width: 60%;
+  width: 70%;
   padding: 30px;
+
+  h2 {
+    margin-bottom: 30px;
+  }
 
 `;
 
 export const ProductItem = styled.div`
-  margin-top: 40px;
   display: flex;
+  justify-content: space-around;
+  padding: 20px 0;
+  border-bottom: 1px solid #cfcfd1;
+`;
 
-  img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
+export const ProductImage = styled.img`
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+`;
+
+export const ProductDescription = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  p {
+    font-weight: bold;
+    font-size: 18px;
+  }
+  span {
+    color: #68696e;
+  }
+`;
+
+export const ProductQuantity = styled.div`
+  display: flex;
+  align-items: center;
+  height: 100%;
+
+  input {
+    width: 50px;
+    border: 1px solid #40424a;
+    border-radius: 4px;
+    text-align: center;
   }
 
-  div {
-    margin-left: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-
-    small {
-      color: #d4d5d5;
-    }
+  button {
+    border: 0;
+    background: transparent;
+    color: #000;
+    font-size: 22px;
+    padding: 10px;
   }
+`;
+
+export const ProductAmount = styled.div`
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  font-size: 20px;
+`;
+
+export const ProductRemove = styled.button`
+  border: 0;
+  background: transparent;
+  font-weight: bold;
+  font-size: 18px;
 `;
 
 export const CardDetails = styled.div`
   display: flex;
   flex-direction: column;
-  width: 40%;
+  width: 30%;
   background: #40424a;
   border-radius: 10px;
   padding: 30px;
@@ -56,6 +98,11 @@ export const CardDetails = styled.div`
 export const PaymentForm = styled.div`
   margin: 30px auto;
 
+  p {
+    color: #b0b1b4;
+    margin-bottom: 20px;
+  }
+
   form  {
     display: flex;
     flex-direction: column;
@@ -64,6 +111,8 @@ export const PaymentForm = styled.div`
       background: transparent;
       border: 0;
       border-bottom: 1px solid #b0b1b4;
+      color: #6d6f76;
+      font-weight: bold;
       padding: 5px;
       margin-top: 20px;
       width: 100%;
