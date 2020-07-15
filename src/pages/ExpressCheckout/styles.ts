@@ -93,6 +93,8 @@ export const Footer = styled.div`
   align-items: center;
 
   button {
+    display: flex;
+    align-items: center;
     border: 0;
     background: transparent;
     font-weight: bold;
@@ -121,6 +123,7 @@ export const CardDetails = styled.div`
   background: #40424a;
   border-radius: 10px;
   padding: 30px;
+  box-shadow: -2px 3px 28px -1px rgba(0,0,0,0.75);
 
   h2 {
     color: #fff;

@@ -7,6 +7,15 @@ import {
   CardDetails, PaymentForm, Footer,
 } from './styles';
 
+interface Product {
+  id: number;
+  image: string;
+  name: string;
+  description: string;
+  quantity: number;
+  price: number;
+}
+
 const ExpressCheckout: React.FC = () => {
   const [checkout, setCheckout] = useState({
     cvc: '',
@@ -15,6 +24,23 @@ const ExpressCheckout: React.FC = () => {
     number: '',
   });
 
+  const [products, setProducts] = useState<Product[]>([{
+    id: Math.random(),
+    image: 'https://www.piolafotografia.com.br/wp-content/uploads/2014/08/fotografia-de-produto-comida-gastronomia-profissional-regiao-abc-sao-caetano-do-sul-pudim-800x532.jpg',
+    name: 'Chicken mono',
+    description: 'Aqui é uma descrição',
+    quantity: 0,
+    price: 4,
+  },
+  {
+    id: Math.random(),
+    image: 'https://www.piolafotografia.com.br/wp-content/uploads/2014/08/fotografia-de-produto-comida-gastronomia-profissional-regiao-abc-sao-caetano-do-sul-pudim-800x532.jpg',
+    name: 'Chicken mono 22',
+    description: 'Aqui é uma descrição',
+    quantity: 0,
+    price: 2,
+  },
+  ]);
   function handleSubmitData(e: React.FormEvent<EventTarget>) {
     e.preventDefault();
     console.log(checkout);
@@ -25,66 +51,44 @@ const ExpressCheckout: React.FC = () => {
     setCheckout({ ...checkout, [name]: value });
   }
 
+  function handleIncrement(product: Product) {
+    const idx = products.findIndex((p) => p.id === product.id);
+    products[idx].quantity += 1;
+    setProducts([...products]);
+  }
+
+  function handleDecrement(product: Product) {
+    const idx = products.findIndex((p) => p.id === product.id);
+    products[idx].quantity -= 1;
+    setProducts([...products]);
+  }
+
   return (
     // eslint-disable-next-line react/jsx-filename-extension
     <Container>
       <ShoppingCart>
         <h2>Shopping Cart</h2>
-        <ProductItem>
-          <ProductImage src="https://www.piolafotografia.com.br/wp-content/uploads/2014/08/fotografia-de-produto-comida-gastronomia-profissional-regiao-abc-sao-caetano-do-sul-pudim-800x532.jpg" alt="Produto" />
-          <ProductDescription>
-            <p>Chicken mono</p>
-            <span>Aqui é uma descrição...</span>
-          </ProductDescription>
-          <ProductQuantity>
-            <button type="button">-</button>
-            <input type="text" value={10} />
-            <button type="button">+</button>
-          </ProductQuantity>
-          <ProductAmount>
-            R$9,00
-          </ProductAmount>
-          <ProductRemove>
-            X
-          </ProductRemove>
-        </ProductItem>
-        <ProductItem>
-          <ProductImage src="https://www.piolafotografia.com.br/wp-content/uploads/2014/08/fotografia-de-produto-comida-gastronomia-profissional-regiao-abc-sao-caetano-do-sul-pudim-800x532.jpg" alt="Produto" />
-          <ProductDescription>
-            <p>Chicken mono</p>
-            <span>Aqui é uma descrição...</span>
-          </ProductDescription>
-          <ProductQuantity>
-            <button type="button">-</button>
-            <input type="text" value={10} />
-            <button type="button">+</button>
-          </ProductQuantity>
-          <ProductAmount>
-            R$9,00
-          </ProductAmount>
-          <ProductRemove>
-            X
-          </ProductRemove>
-        </ProductItem>
-        <ProductItem>
-          <ProductImage src="https://www.piolafotografia.com.br/wp-content/uploads/2014/08/fotografia-de-produto-comida-gastronomia-profissional-regiao-abc-sao-caetano-do-sul-pudim-800x532.jpg" alt="Produto" />
-          <ProductDescription>
-            <p>Chicken mono</p>
-            <span>Aqui é uma descrição...</span>
-          </ProductDescription>
-          <ProductQuantity>
-            <button type="button">-</button>
-            <input type="text" value={10} />
-            <button type="button">+</button>
-          </ProductQuantity>
-          <ProductAmount>
-            R$9,00
-          </ProductAmount>
-          <ProductRemove>
-            X
-          </ProductRemove>
-        </ProductItem>
-
+        {products.map((product) => (
+          <ProductItem key={product.name}>
+            <ProductImage src={product.image} alt="Produto" />
+            <ProductDescription>
+              <p>{product.name}</p>
+              <span>{product.description}</span>
+            </ProductDescription>
+            <ProductQuantity>
+              <button type="button" onClick={() => handleDecrement(product)}>-</button>
+              <input type="text" value={product.quantity} readOnly />
+              <button type="button" onClick={() => handleIncrement(product)}>+</button>
+            </ProductQuantity>
+            <ProductAmount>
+              R$
+              {product.quantity * product.price}
+            </ProductAmount>
+            <ProductRemove>
+              X
+            </ProductRemove>
+          </ProductItem>
+        ))}
         <Footer>
           <button type="button">
             <AiOutlineArrowLeft />
@@ -93,7 +97,7 @@ const ExpressCheckout: React.FC = () => {
           <div>
             <span>
               Subtotal:
-              <strong>R$27,00</strong>
+              <strong> R$27,00</strong>
             </span>
           </div>
         </Footer>
